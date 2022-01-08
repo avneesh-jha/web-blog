@@ -1,24 +1,46 @@
 {% extends 'main\base.html' %}
+<body>
+    {% include 'main/nav.html' %} 
+
 {% block content %}
+<div class="container">
     <h2>Create a New Article</h2>
     {% if success %}
     <h3>Enter the New data below</h3>
     {% endif %}
 
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST">
         {% csrf_token %}
         <input type="text" name="title" id="title" placeholder="Enter The Title"/>
         <textarea name="content" placeholder="Your post goes here"></textarea>
+        <div class="input-field col s8 m4 l4">
         <select name="author">
             {% for author in authors %}
                 <option value="{{ author.id }}">{{ author.name }}</option>
             {% endfor %}
         </select>
+        <label>Choose the Author</label>
+        </div>
+
         <button value="Submit">Submit</button>
         <button value="reset">Reset</button>
+       
     </form>
     
 
 
 
 {% endblock %}
+</div>
+{% block script %}
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+</script>
+  
+
+{% endblock %}
+
+</body>

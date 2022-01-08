@@ -51,3 +51,31 @@ def create_article(request):
 
     
     return render(request,'main\create_article.html',context)
+
+
+
+
+def add_author(request):
+    #print(request.POST)
+    authors=models.Author.objects.all()
+    context={
+        'authors':authors
+    }
+
+    if request.method=="POST":
+        author_data ={
+            'name': request.POST['name'],
+            
+            }
+        author=models.Author.objects.create(**author_data)
+       # author_data=models.Author.objects.filter(pk=request.POST['author'])
+        #article.authors.set(author_data)
+        #author=models.Author.objects.filter(pk=request.POST['author'])
+        #article.authors.set(author)
+        
+        context["success"]=True
+        
+
+    
+    return render(request,'main\_author.html', context)
+
