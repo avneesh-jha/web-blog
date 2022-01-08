@@ -27,3 +27,10 @@ def author(request,pk):
     }
     return render(request,'main\writer.html',context)
     
+
+def create_article(request):
+    authors=models.Author.objects.all()
+    context={
+        'author':authors
+    }
+    return render(request,'main\create_article',context)
