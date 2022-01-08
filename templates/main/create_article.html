@@ -1,7 +1,24 @@
 {% extends 'main\base.html' %}
 {% block content %}
     <h2>Create a New Article</h2>
+    {% if success %}
+    <h3>Enter the New data below</h3>
+    {% endif %}
 
-    <form></form>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" id="title" placeholder="Enter The Title"/>
+        <textarea name="content" placeholder="Your post goes here"></textarea>
+        <select name="author">
+            {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+            {% endfor %}
+        </select>
+        <button value="Submit">Submit</button>
+        <button value="reset">Reset</button>
+    </form>
+    
+
+
 
 {% endblock %}
