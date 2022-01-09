@@ -1,46 +1,68 @@
 {% extends 'main\base.html' %}
-<body>
-    {% include 'main/nav.html' %} 
-
-{% block content %}
-<div class="container">
-    <h2>Create a New Article</h2>
-    {% if success %}
-    <h3>Enter the New data below</h3>
-    {% endif %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="title" id="title" placeholder="Enter The Title"/>
-        <textarea name="content" placeholder="Your post goes here"></textarea>
-        <div class="input-field col s8 m4 l4">
-        <select name="author">
-            {% for author in authors %}
-                <option value="{{ author.id }}">{{ author.name }}</option>
-            {% endfor %}
-        </select>
-        <label>Choose the Author</label>
-        </div>
-
-        <button value="Submit">Submit</button>
-        <button value="reset">Reset</button>
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        {% include 'main/nav.html' %} 
+        {% block content %}
+        <div class="container">
+            <div>
+                <h2>Create a New Article</h2>
+            </div>
+            {% if success %}
+                <div>
+                    <h7>Previous Article Published</h7><br>
+                    <h8>Publish the New Article by enetring below data</h8>
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6 m4 l2">
+                            <input id="title" name="title" type="text" data-length="10">
+                            <label for="title">Enter the Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m8 l8">
+                            <textarea id="content" name="content" class="materialize-textarea" data-length="500"></textarea>
+                            <label for="content">YOUR CONTENT GOES HERE</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 m4 l4">
+                            <select name="author">
+                                {% for author in authors %}
+                                    <option value="{{ author.id }}">{{ author.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Choose the Author</label>
+                        </div>
+                    </div>
+                    <button value="Submit">Submit</button>
+                    <button value="reset">Reset</button>
        
-    </form>
-    
-
-
-
-{% endblock %}
-</div>
-{% block script %}
-<script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-  });
-</script>
+            </form>
+        </div>
+        {% endblock %}
+        
+        {% block script %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+            });
+            $(document).ready(function() {
+            $('input#title, textarea#content').characterCounter();
+            });
+        </script>
   
 
-{% endblock %}
-
-</body>
+        {% endblock %}
+    </body>
+</html>

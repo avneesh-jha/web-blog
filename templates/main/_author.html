@@ -1,31 +1,46 @@
 {% extends 'main\base.html' %}
-<body>
-    {% include 'main/nav.html' %} 
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+    </head>
+    <body>
+        {% include 'main/nav.html' %} 
+        {% block content %}
+        <div class="container">
+            <h2 class="center">Add a New Author</h2>
+            {% if success %}
+                <h5>Previous Author Added</h5>
+                <h8>Enter the New data below</h8>
+            {% endif %}
 
-{% block content %}
-<div class="container">
-    <h2>Add a New Author</h2>
-    {% if success %}
-    <h3>Enter the New data below</h3>
-    {% endif %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="name"  placeholder="Enter The Name"/>
-        <ul>
-            {% for author in authors %}
-            <li>{{ author.name}}</li>
-            {% endfor %}
-        </ul>
-        
-        <button value="Submit">Submit</button>
-        <button value="reset">Reset</button>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                <i class="medium  material-icons prefix">face
+                    <input type="text" name="name"  placeholder="Enter The Name"/>
+                </i>
+                </div>
+                <br>
+                <button value="Submit">Submit</button>
+                <button value="reset">Reset</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label>Available Authors</label>
+                <ul>
+                    {% for author in authors %}
+                        <li>{{ author.name}}</li>
+                    {% endfor %}
+                </ul>
        
-    </form>
+            </form>
 
-
-    {% endblock %}
-</div>
-
-
-</body>
+        </div>
+        {% endblock %}
+    </body>
+</html>

@@ -1,19 +1,48 @@
-{% extends 'main/base.html' %} 
-<body>
-  {% include 'main/nav.html' %} 
-{% block content%}
-<div class="container">
-<h2>Welcome to My Blog</h2>
-<h5>Top 10 Articles</h5>
-<ul>
-  {% for article in latest_articles %}
-  <li>
-    <a href="{% url 'get_article' article.id %}">
-      {{ article }} 
-  </a>
-  </li>
-  {% endfor %}
-</ul>
-{% endblock %}
-</div>
-</body>
+{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+    </head>
+    <body>
+      {% include 'main/nav.html' %} 
+      {% block content%}
+      <div class="container">
+        <h2 class="center">Welcome to My Blog</h2>
+        <br>
+        <br>
+        <div class="row m12 s12 l12">
+        <div class="s12 m8 l4">
+          <h5>Top 10 Articles</h5>
+          <ul>
+            {% for article in latest_articles %}
+              <li>
+                <a href="{% url 'get_article' article.id %}">
+                {{ article }} 
+                 </a>
+              </li>
+          
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="s12 m8 l4">
+          <h5>Top 10 Articles</h5>
+          <ul>
+            {% for article in latest_articles %}
+              <li>
+                <a href="{% url 'get_article' article.id %}">
+                {{ article }} 
+                 </a>
+              </li>
+          
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+        {% endblock %}
+      </div>
+    </body>
+</html>
