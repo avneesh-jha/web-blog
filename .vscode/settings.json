@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/Thumbs.db": false
+    },
+    "search.useIgnoreFiles": false
+}

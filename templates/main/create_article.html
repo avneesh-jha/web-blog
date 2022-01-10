@@ -24,7 +24,7 @@
                 {% csrf_token %}
                     <div class="row">
                         <div class="input-field col s6 m4 l2">
-                            <input id="title" name="title" type="text" data-length="10">
+                            <input id="title" name="title" type="text" data-length="200">
                             <label for="title">Enter the Title</label>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <label>Choose the Author</label>
                         </div>
                     </div>
-                    <button value="Submit">Submit</button>
+                    <button value="submit">Submit</button>
                     <button value="reset">Reset</button>
        
             </form>
@@ -52,15 +52,15 @@
         {% endblock %}
         
         {% block script %}
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-            });
-            $(document).ready(function() {
-            $('input#title, textarea#content').characterCounter();
-            });
-        </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems);
+                });
+                $(document).ready(function() {
+                $('input#title, textarea#content').characterCounter();
+                });
+            </script>
   
 
         {% endblock %}
