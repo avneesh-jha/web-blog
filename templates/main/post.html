@@ -1,9 +1,12 @@
 {% extends 'main/base.html' %} 
-
+<html>
+    <body>
 {% block content %} 
-    <h1>{{ article.title}}</h1>
-    <h3>{{ article.Created_at}}</h3>
-    <h4>
+    <div class="container">
+    <h1 class="center">{{ article.title}}</h1>
+    <h8>{{ article.Created_at}}</h8>
+    <br>
+    <h9>
         Written By:
         {% for author in article.authors.all %}
             <a href="{% url 'get_author' author.id %}">
@@ -11,9 +14,14 @@
             </a>
         {% endfor %}
     
-    </h4>
+    </h9>
 
     <p>
-        {{ article.content }}
+       <h5> {{ article.content }} </h5>
     </p>
+    </div>
+
+    
 {% endblock %}
+</body>
+</html>

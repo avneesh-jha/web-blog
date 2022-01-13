@@ -14,8 +14,8 @@
         <h2 class="center">Welcome to My Blog</h2>
         <br>
         <br>
-        <div class="row m12 s12 l12">
-        <div class="s12 m8 l4">
+        <div class="col m12 s12 l12">
+        <div class="left s12 m4 l4">
           <h5>Top 10 Articles</h5>
           <ul>
             {% for article in latest_articles %}
@@ -28,13 +28,13 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="s12 m8 l4">
-          <h5>Top 10 Articles</h5>
+        <div class="right s12 m4 l4">
+          <h5>5 Most recent added authors</h5>
           <ul>
-            {% for article in latest_articles %}
+            {% for author in latest_authors %}
               <li>
-                <a href="{% url 'get_article' article.id %}">
-                {{ article }} 
+                <a href="{% url 'get_author' author.id %}">
+                {{ author }} 
                  </a>
               </li>
           
@@ -42,7 +42,10 @@
           </ul>
         </div>
       </div>
-        {% endblock %}
-      </div>
+    </div>
+    {% endblock %}
+      
     </body>
+
+    
 </html>

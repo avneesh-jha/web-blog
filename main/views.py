@@ -6,8 +6,10 @@ from main import models
 # Create your views here.
 def index (request):
     latest_articles =models.Article.objects.all().order_by ('-Created_at')[:10]
+    latest_authors=models.Author.objects.all().order_by('-id')[:5]
     context = {
-        'latest_articles': latest_articles
+        'latest_articles': latest_articles,
+        'latest_authors':latest_authors
     }
     return render(request ,'main\index.html',context)
 
@@ -23,7 +25,8 @@ def article (request,pk):
 def author(request,pk):
     author= get_object_or_404(models.Author,pk=pk)
     context={
-        'author': author
+        'author': author,
+        'count': 0
     }
     return render(request,'main\writer.html',context)
     
